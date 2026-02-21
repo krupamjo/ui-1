@@ -1,0 +1,10 @@
+<div class="pets">
+  <h2>Pets</h2>
+  <ul>
+@for (pet of (getPets$ | async); track pet.name) {
+    <li>{{ pet.name }}</li>
+} @empty {
+    <li>There are no items.</li>
+}
+  </ul>
+</div>

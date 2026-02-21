@@ -1,0 +1,23 @@
+.pets {
+  font-family: Arial, sans-serif;
+}
+
+.pets h2 {
+  margin-bottom: 0.5rem;
+}
+
+.pets ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.pets li {
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pets button {
+  margin-left: auto;
+}
