@@ -1,0 +1,11 @@
+<div class="account-menu">
+  <div class="user-info">
+    @if ((isLoggedIn$ | async) && (user$ | async)) {
+    <span class="email">{{ (user$ | async)?.profile?.email }}</span>
+    <button class="btn btn-logout" (click)="logout()">Logout</button>
+    }
+    @else {
+    <button class="btn btn-login" (click)="login()">Login</button>
+    }
+  </div>
+</div>

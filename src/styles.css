@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  background: var(--primary-gradient);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 1.5rem;
+  }
+}
+

@@ -1,0 +1,20 @@
+<div class="pets">
+  <h2>Pets</h2>
+  
+  <div class="pets-container">
+    <ul class="pets-list">
+      @for (pet of pets; track pet.id) {
+        <li>
+          <div class="pet-info">
+            <div class="pet-name">{{ pet.name }}</div>
+            <div class="pet-dob">DOB: {{ pet.dateOfBirth | date: 'short' }}</div>
+          </div>
+        </li>
+      } @empty {
+        <li class="empty-state">
+          <p>No pets found.</p>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
