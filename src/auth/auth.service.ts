@@ -23,7 +23,7 @@ export class AuthService {
       client_id: "krupamjo-ui-1",
       redirect_uri: environment.redirectUrl,
       response_type: "id_token token",
-      scope: "openid profile email phone address krupamjo-api-1 ",
+      scope: "openid profile email krupamjo-api-1",
       post_logout_redirect_uri: environment.postLogoutRedirectUrl,
     };
     this.mgr = new UserManager(this.config);
