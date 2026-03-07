@@ -1,20 +1,24 @@
-<div class="pets">
-  <h2>Pets</h2>
-  
-  <div class="pets-container">
-    <ul class="pets-list">
-      @for (pet of pets; track pet.id) {
-        <li>
-          <div class="pet-info">
-            <div class="pet-name">{{ pet.name }}</div>
-            <div class="pet-dob">DOB: {{ pet.dateOfBirth | date: 'short' }}</div>
-          </div>
-        </li>
-      } @empty {
-        <li class="empty-state">
-          <p>No pets found.</p>
-        </li>
-      }
-    </ul>
+<div class="row">
+  <div class="col-12">
+    <h2 class="mb-4">Pets</h2>
+    
+    <div class="row">
+      <div class="col-12">
+        <div class="list-group">
+          @for (pet of pets; track pet.id) {
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100">
+                <h5 class="mb-1">{{ pet.name }}</h5>
+              </div>
+              <p class="mb-1">DOB: {{ pet.dateOfBirth | date: 'short' }}</p>
+            </div>
+          } @empty {
+            <div class="alert alert-info" role="alert">
+              No pets found.
+            </div>
+          }
+        </div>
+      </div>
+    </div>
   </div>
 </div>

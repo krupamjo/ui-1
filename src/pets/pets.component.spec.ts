@@ -47,32 +47,32 @@ describe('PetsComponent', () => {
   it('should display all pets in the template', () => {
     fixture.detectChanges();
 
-    const petListItems = fixture.nativeElement.querySelectorAll('li');
+    const petListItems = fixture.nativeElement.querySelectorAll('.list-group-item');
     expect(petListItems.length).toBe(mockPets.length);
   });
 
   it('should display pet names correctly', () => {
     fixture.detectChanges();
 
-    const petNames = fixture.nativeElement.querySelectorAll('.pet-name');
-    expect(petNames[0].textContent).toContain('Fluffy');
-    expect(petNames[1].textContent).toContain('Buddy');
-    expect(petNames[2].textContent).toContain('Luna');
+    const petItems = fixture.nativeElement.querySelectorAll('.list-group-item');
+    expect(petItems[0].textContent).toContain('Fluffy');
+    expect(petItems[1].textContent).toContain('Buddy');
+    expect(petItems[2].textContent).toContain('Luna');
   });
 
   it('should display pet dates of birth with date pipe', () => {
     fixture.detectChanges();
 
-    const petDobs = fixture.nativeElement.querySelectorAll('.pet-dob');
-    expect(petDobs.length).toBe(mockPets.length);
-    
+    const petItems = fixture.nativeElement.querySelectorAll('.list-group-item');
+    expect(petItems.length).toBe(mockPets.length);
+
     // Check that DOB label exists
-    petDobs.forEach((element: HTMLElement) => {
+    petItems.forEach((element: HTMLElement) => {
       expect(element.textContent).toContain('DOB:');
     });
   });
 
-  it('should show empty state when no pets are provided', () => {
+  it('should show empty state when no pets are provided', async () => {
     // Create a fresh TestBed for this test with empty pets
     const emptyMockRoute = {
       data: of({ pets: [] }),
@@ -82,21 +82,21 @@ describe('PetsComponent', () => {
     };
 
     TestBed.resetTestingModule();
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [PetsComponent],
       providers: [
         { provide: ActivatedRoute, useValue: emptyMockRoute }
       ]
-    });
+    }).compileComponents();
 
     const emptyFixture = TestBed.createComponent(PetsComponent);
     const emptyComponent = emptyFixture.componentInstance;
-    
+
     expect(emptyComponent.pets).toEqual([]);
-    
+
     emptyFixture.detectChanges();
-    
-    const emptyState = emptyFixture.nativeElement.querySelector('.empty-state');
+
+    const emptyState = emptyFixture.nativeElement.querySelector('.alert-info');
     expect(emptyState).toBeTruthy();
     expect(emptyState.textContent).toContain('No pets found');
   });
@@ -104,12 +104,11 @@ describe('PetsComponent', () => {
   it('should use pet id as track identifier in the for loop', () => {
     fixture.detectChanges();
 
-    const petListItems = fixture.nativeElement.querySelectorAll('li');
-    
+    const petListItems = fixture.nativeElement.querySelectorAll('.list-group-item');
+
     // Verify that each list item corresponds to a pet
     mockPets.forEach((pet, index) => {
-      const petName = petListItems[index].querySelector('.pet-name');
-      expect(petName.textContent).toContain(pet.name);
+      expect(petListItems[index].textContent).toContain(pet.name);
     });
   });
 

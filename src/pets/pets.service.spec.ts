@@ -10,7 +10,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 describe('PetsService', () => {
   let service: PetsService;
   let httpMock: HttpTestingController;
-  const apiUrl = 'https://localhost:7240/pets';
+  const apiUrl = 'https://krupamjo-api.azurewebsites.net/pets';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
