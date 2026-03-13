@@ -1,6 +1,9 @@
 <div class="d-flex align-items-center gap-3">
   <div>
     @if ((isLoggedIn$ | async)) {
+    @if ((user$ | async)?.profile?.picture) {
+    <img class="avatar me-2" [src]="(user$ | async)?.profile?.picture" alt="User avatar" />
+    }
     <span class="text-white me-2">{{ (user$ | async)?.profile?.email }}</span>
     <button class="btn btn-outline-light btn-sm" (click)="logout()">Logout</button>
     }

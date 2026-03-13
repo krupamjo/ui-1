@@ -95,4 +95,33 @@ describe('AccountMenuComponent', () => {
     component.logout();
     expect(authService.logout).toHaveBeenCalled();
   });
+
+  it('should show avatar img when user profile.picture is set', () => {
+    const mockUser = {
+      profile: { name: 'Test User', picture: 'https://example.com/avatar.jpg' },
+      access_token: 'token',
+      expired: false,
+    } as User;
+
+    userSubject.next(mockUser);
+    fixture.detectChanges();
+
+    const img: HTMLImageElement = fixture.nativeElement.querySelector('img.avatar');
+    expect(img).toBeTruthy();
+    expect(img.src).toBe('https://example.com/avatar.jpg');
+  });
+
+  it('should not show avatar img when user profile.picture is null', () => {
+    const mockUser = {
+      profile: { name: 'Test User', picture: null },
+      access_token: 'token',
+      expired: false,
+    } as User;
+
+    userSubject.next(mockUser);
+    fixture.detectChanges();
+
+    const img = fixture.nativeElement.querySelector('img.avatar');
+    expect(img).toBeNull();
+  });
 });
