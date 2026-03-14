@@ -8,7 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:vitest": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test --config=test/playwright.config.ts",
+    "test:e2e:headed": "playwright test --config=test/playwright.config.ts --headed",
+    "test:e2e:debug": "playwright test --config=test/playwright.config.ts --debug"
   },
   "prettier": {
     "printWidth": 100,
@@ -40,6 +43,7 @@
     "@angular/build": "^21.1.1",
     "@angular/cli": "^21.1.1",
     "@angular/compiler-cli": "^21.1.0",
+    "@playwright/test": "^1.50.0",
     "@vitest/coverage-v8": "^4.0.18",
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",
